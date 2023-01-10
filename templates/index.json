@@ -1,0 +1,21 @@
+{
+    "name": "Homepage",
+    "sections": {
+        "shop-now-section": {
+            "type": "shop-now-section"
+        },
+        "collections-list": {
+            "type": "collections-list"
+        },
+        "new-product-collection": {
+            "type": "new-product-collection"
+        },
+        "zara-section": {
+            "type": "zara-section"
+        },
+        "collection-with-swiper": {
+            "type": "collection-with-swiper"
+        }
+    },
+    "order": ["shop-now-section","collections-list","new-product-collection","zara-section","collection-with-swiper"]
+}

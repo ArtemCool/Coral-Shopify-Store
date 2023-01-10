@@ -1,0 +1,108 @@
+<div class="bg-white">
+  <div class="container mx-auto px-3 py-9">
+    <div class="pb-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-center items-center">
+      {% for collection in section.settings.svg_collection_list %}
+        <a href="{{ collection.url }}" class="flex justify-center bg-white hover:bg-main duration-300 py-2">
+          <img
+            src="{{ collection.image | image_url}}"
+            class="h-16"
+            loading="lazy"
+            width=""
+            height="">
+        </a>
+      {% endfor %}
+    </div>
+    <div class="flex items-center">
+      <h3 class="collections_list_heading_class rotate-180 text-lg font-roboto font-normal uppercase pl-1">{{ section.settings.collections_list_heading }}</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 w-full md:h-105 max-h-105">
+        {% for collection in section.settings.main_collections_list %}
+          {% if forloop.index == 1 %}
+            <div x-data="{ collectionDescriptionOpen: false }" class="sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3">
+              <a
+                href="{{ collection.url }}"
+                x-on:mouseover="collectionDescriptionOpen = true"
+                x-on:mouseleave="collectionDescriptionOpen = false"
+                class="relative overflow-hidden h-105 group">
+                <img
+                  src="{{ collection.image | image_url }}"
+                  loading="lazy"
+                  width=""
+                  height=""
+                  class="h-58 sm:h-105 w-full object-cover object-top">
+                <div class="w-full h-full z-10 absolute top-0 bg-black opacity-0 group-hover:opacity-40 duration-300"></div>
+                <div
+                  x-show="collectionDescriptionOpen"
+                  x-transition:enter="transition ease-out duration-700"
+                  x-transition:enter-start="opacity-0"
+                  x-transition:enter-end="opacity-100"
+                  x-transition:leave="transition ease-out duration-300"
+                  x-transition:leave-start="opacity-100"
+                  x-transition:leave-end="opacity-0"
+                  class="absolute bottom-0 z-20 flex justify-between items-center w-full py-2 px-3 bg-collection_description">
+                  <h4 class="text-white text-xs xl:text-sm">{{ collection.title }}</h4>
+                  <span class="text-white text-xs xl:text-sm whitespace-nowrap">{{ collection.products_count }} Product</span>
+                </div>
+              </a>
+            </div>
+          {% else %}
+            <div x-data="{ collectionDescriptionOpenSecond: false }">
+              <a
+                href="{{ collection.url }}"
+                x-on:mouseover="collectionDescriptionOpenSecond = true"
+                x-on:mouseleave="collectionDescriptionOpenSecond = false"
+                class="relative overflow-hidden h-58 group">
+                <img
+                  src="{{ collection.image | image_url }}"
+                  loading="lazy"
+                  width=""
+                  height=""
+                  class="h-58 w-full duration-300 block object-cover object-top">
+                <div class="w-full h-full z-10 absolute top-0 bg-black opacity-0 group-hover:opacity-40 duration-300"></div>
+                <div
+                  x-show="collectionDescriptionOpenSecond"
+                  x-transition:enter="transition ease-out duration-700"
+                  x-transition:enter-start="opacity-0"
+                  x-transition:enter-end="opacity-100"
+                  x-transition:leave="transition ease-out duration-300"
+                  x-transition:leave-start="opacity-100"
+                  x-transition:leave-end="opacity-0"
+                  class="absolute bottom-0 z-20 flex justify-between items-center gap-4 w-full py-2 px-3 bg-collection_description">
+                  <h4 class="text-white text-xs xl:text-sm">{{ collection.title }}</h4>
+                  <span class="text-white text-xs xl:text-sm whitespace-nowrap">{{ collection.products_count }} Product</span>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .collections_list_heading_class {
+    writing-mode: vertical-lr;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Collections List",
+    "settings": [
+      {
+        "type": "text",
+        "id": "collections_list_heading",
+        "default": "Explore new and popular styles",
+        "label": "Collections List Heading"
+      }, {
+        "type": "collection_list",
+        "id": "svg_collection_list",
+        "label": "Logo Collections List"
+      }, {
+        "type": "collection_list",
+        "id": "main_collections_list",
+        "label": "Main Collections List"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,57 @@
+<a
+  href="{{ product_product.url }}"
+  class="mx-auto overflow-hidden grid gap-2 relative group"
+  x-data="{ addToCartOpen: false }"
+  x-on:mouseover="addToCartOpen = true"
+  x-on:mouseleave="addToCartOpen = false">
+  <div class="relative h-80 overflow-hidden">
+    <img
+      src="{{ product_product.featured_image | image_url }}"
+      loading="lazy"
+      width=""
+      height=""
+      class="overflow-hidden object-cover inline-flex sm:object-top w-full h-full transition duration-1000 ease-in-out group-hover:scale-105 transform">
+
+    <div
+      x-show="addToCartOpen"
+      x-transition:enter="transition ease-out duration-700"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-out duration-300"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="absolute bottom-0 z-30 flex justify-center items-center w-full py-2 px-3 bg-collection_description">
+      <button class="flex items-center gap-1 justify-center">
+        {% render 'icon-shopping-bag-add' %}
+        <span class="text-sm font-open_sans text-white">View more</span>
+      </button>
+    </div>
+    <div class="w-full h-full z-20 absolute top-0 bg-black opacity-0 group-hover:opacity-40 duration-300"></div>
+  </div>
+
+  <h4 class="text-md font-open_sans group-hover:underline">{{ product_product.title }}</h4>
+
+  <div class="flex justify-between items-center">
+    <span class="text-gray-400 text-sm font-open_sans">{{ product_product.type }}</span>
+    <div class="flex gap-2">
+      {% if product_product.compare_at_price %}
+        <span class="text-gray-400 text-sm font-open_sans line-through">{{ product_product.compare_at_price_max | money }}</span>
+        <span class="text-sm font-open_sans text-red-400">{{ product_product.price | money }}</span>
+      {% else %}
+        <span class="text-sm font-open_sans">{{ product_product.price | money }}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if product_product.compare_at_price %}
+    <div class="absolute top-5 left-0 z-10">
+      <span class="uppercase text-sm font-open_sans text-white bg-collection_description px-2 py-1">Sale</span>
+    </div>
+  {% endif %}
+
+  {% if product_product.tags contains 'Hot' %}
+    <div class="absolute top-5 left-0 z-10">
+      <span class="uppercase text-sm font-open_sans text-white bg-hot_background px-2 py-1">Hot</span>
+    </div>
+  {% endif %}
+</a>

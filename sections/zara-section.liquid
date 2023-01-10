@@ -1,0 +1,40 @@
+<div class="py-4 bg-white">
+  <div class="bg-black pb-4 sm:pb-0 relative grid overflow-hidden gap-6 sm:h-105">
+    <img
+      src="{{ section.settings.zara_collection_image | image_url }}"
+      alt="{{ section.settings.zara_collection_image.alt }}"
+      loading="lazy"
+      width=""
+      height=""
+      class="h-60 w-full overflow-hidden sm:h-full sm:w-full sm:absolute sm:top-0 sm:left-0 object-cover sm:z-0">
+    <div class="sm:w-full sm:h-full sm:absolute z-30 flex items-center justify-start sm:justify-end sm:px-5 md:px-20 lg:px-32 xl:px-52">
+      <div class="grid gap-6 px-3 grid-cols-1">
+        {% render 'icon-zara-logo' %}
+        <p class="text-white font-roboto font-normal font-sm sm:font-base">{{ section.settings.zara_collection_picker.description }}</p>
+        <a href="{{ section.settings.zara_collection_picker.url }}" class="py-3 px-5 font-roboto font-normal font-base bg-white w-min whitespace-nowrap hover:bg-gray-300 duration-300">See Collection</a>
+      </div>
+    </div>
+    <div class="sm:block absolute z-20 top-1/2 sm:top-3 right-0 hidden">
+      <div class="w-full h-full">
+        {% render 'icon-zara-big-logo-gray' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Zara Collection",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "zara_collection_image",
+        "label": "Zara Collection Image"
+      }, {
+        "type": "collection",
+        "id": "zara_collection_picker",
+        "label": "Zara Collection Picker"
+      }
+    ]
+  }
+{% endschema %}

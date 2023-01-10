@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<style>
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: black;
+    height: 30px;
+    width: 30px;
+    z-index: 50;
+    top: 60%;
+    position: absolute;
+    transform: translateY(-50%);
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 30px;
+  }
+  .product--information {
+    height: fit-content;
+  }
+</style>
+
+<div class="bg-white px-3 py-9">
+  <div class="swiper container mx-auto relative">
+    <h1 class="text-center text-3xl font-roboto font-medium pb-6">{{ section.settings.collection-with-swiper.title }}</h1>
+    <div class="swiper-wrapper flex">
+      {% for product in section.settings.collection-with-swiper.products %}
+        <div class="swiper-slide">
+          {% render 'product-card', product_product: product %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    navigation: {
+      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next'
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+    breakpoints: {
+      640: {
+        slidesPerView: 2
+      },
+      768: {
+        slidesPerView: 2
+      },
+      1024: {
+        slidesPerView: 3
+      },
+      1280: {
+        slidesPerView: 4
+      }
+    }
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Collection With Swiper",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection-with-swiper",
+        "label": "Collection With Swiper"
+      }
+    ]
+  }
+{% endschema %}

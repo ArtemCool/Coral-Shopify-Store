@@ -1,0 +1,25 @@
+<div class="container mx-auto px-3 py-4">
+  <div class="grid gap-6">
+    <h1 class="text-9xl text-center">{{ section.settings.not-found-heading }}</h1>
+    <span class="text-xl text-center">{{ section.settings.not-found-description }}</span>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "404",
+    "settings": [
+      {
+        "type": "text",
+        "id": "not-found-heading",
+        "default": "404",
+        "label": "400 Heading"
+      }, {
+        "type": "text",
+        "id": "not-found-description",
+        "default": "Page you`re looking for does`t exist!",
+        "label": "404 Description"
+      }
+    ]
+  }
+{% endschema %}

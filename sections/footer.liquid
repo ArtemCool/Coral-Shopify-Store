@@ -1,0 +1,89 @@
+<div class="bg-white">
+  <div class="container mx-auto py-4 pt-14 pb-9 px-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-9 sm:gap-x-32 md:gap-x-48 md:gap-y-9 lg:gap-9">
+      <div class="flex flex-col gap-8">
+        {% render 'icon-main-logo' %}
+        <span class="text-sm font-open_sans font-normal text-center sm:text-left">{{ section.settings.store_address }}</span>
+        <div class="flex justify-center sm:justify-start items-center gap-6">
+          <a href="https://www.facebook.com/">
+            {% render 'icon-facebook' %}
+          </a>
+          <a href="https://twitter.com/">
+            {% render 'icon-twitter' %}
+          </a>
+          <a href="https://www.linkedin.com/">
+            {% render 'icon-linkedin' %}
+          </a>
+          <a href="https://dribbble.com/">
+            {% render 'icon-dribbble' %}
+          </a>
+        </div>
+      </div>
+      <div class="grid justify-center sm:justify-start gap-8">
+        <h3 class="font-roboto font-medium text-lg">CATALOG</h3>
+        <div class="grid gap-4">
+          {% for collection in section.settings.footer-collections %}
+            <a href="{{ collection.url }}" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">{{ collection.title }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="grid justify-center gap-8">
+        <h3 class="font-roboto font-medium text-lg">ABOUT US</h3>
+        <div class="grid gap-4">
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Our Producers</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Sitemap</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">FAQ</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">About Us</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Terms & Conditions</a>
+        </div>
+      </div>
+      <div class="grid justify-center sm:justify-start lg:justify-end gap-8">
+        <h3 class="font-roboto font-medium text-lg">CUSTOMER SERVICES</h3>
+        <div class="grid gap-4">
+          <a href="/pages/contact" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Contact Us</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Track Your Order</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Product Care & Repair</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Book an Appointment</a>
+          <a href="#" class="text-sm font-open_sans text-black hover:text-gray-400 duration-300">Shipping & Returns</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-collection_description">
+  <div class="container mx-auto py-4 px-3">
+    <div class="grid gap-6 sm:flex sm:items-center sm:justify-between">
+      <span class="text-center sm:text-left text-sm font-open_sans text-white">© 2022 Coral , Inc.</span>
+      <img
+        src="{{ section.settings.payment-image | image_url }}"
+        loading="lazy"
+        width=""
+        height=""
+        class="mx-auto w-64 sm:w-40 md:w-64">
+      <span class="text-center sm:text-left text-sm font-open_sans text-white">Developed by Artem Grechko</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "store_address",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        "label": "Store Address"
+      }, {
+        "type": "collection_list",
+        "limit": 5,
+        "id": "footer-collections",
+        "label": "Footer Collections"
+      }, {
+        "type": "image_picker",
+        "id": "payment-image",
+        "label": "Payment Sistems Images"
+      }
+    ]
+  }
+{% endschema %}

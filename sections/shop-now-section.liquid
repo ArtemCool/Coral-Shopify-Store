@@ -1,0 +1,51 @@
+<div class="container mx-auto px-3 py-4">
+  <div class="grid md:grid-cols-2 gap-6 sm:gap-12 justify-center items-center">
+    <div class="flex flex-col gap-3 lg:gap-4 xl:gap-8">
+      <h1 class="text-3xl lg:text-3xl xl:text-5xl font-roboto font-light">{{ section.settings.shop-now-heading }}</h1>
+      <p class="text-lg lg:text-xl xl:text-2xl md:leading-10 font-roboto font-normal">{{ section.settings.shop-now-description }}</p>
+      <div class="w-min">
+        <a href="{{ routes.all_products_collection_url }}" class="group flex gap-2 px-3 py-4 bg-black border border-black hover:bg-main duration-300">
+          {% render 'icon-white-shopping-bag' %}
+          <span class="text-white group-hover:text-black duration-300 whitespace-nowrap">Shop Now</span>
+        </a>
+      </div>
+    </div>
+    <div class="h-72 sm:h-96 xl:h-105 rounded-class mx-auto border border-gray-400 border-[1px] row-start-1 row-end-1 md:col-start-2">
+      <img
+        src="{{ section.settings.shop-now-image | image_url }}"
+        loading="lazy"
+        width=""
+        height=""
+        class="h-72 sm:h-96 xl:h-105 rounded-class mx-auto relative bottom-3 right-3">
+    </div>
+  </div>
+</div>
+
+<style>
+  .rounded-class {
+    border-radius: 100px 0 100px 0;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Shop Now Section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "shop-now-image",
+        "label": "Shop Now Image"
+      }, {
+        "type": "text",
+        "id": "shop-now-heading",
+        "default": "Collections",
+        "label": "Shop Now Heading"
+      }, {
+        "type": "text",
+        "id": "shop-now-description",
+        "default": "You can explore and shop many differnt collection from various barands here.",
+        "label": "Shop Now Description"
+      }
+    ]
+  }
+{% endschema %}

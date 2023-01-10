@@ -1,0 +1,184 @@
+{% if section.settings.menu.links == blank %}
+  {% assign main_menu_linklist = linklists[section.settings.menu].links %}
+{% else %}
+  {% assign main_menu_linklist = section.settings.menu.links %}
+{% endif %}
+
+<div class="container mx-auto px-3 py-4 grid" x-data="{ mobileMenuOpen: false, searchBarOpen: false }">
+  <div class="pb-4 border-b-[1px] border-border">
+    <div class="relative md:grid grid-cols-3 justify-center items-center">
+      <!-- SEARCHBAR -->
+      <button
+        x-on:click="searchBarOpen = !searchBarOpen"
+        type="button"
+        class="absolute md:static top-2/4 -translate-y-2/4 md:-translate-y-0">
+        {% render 'icon-searchbar-item' %}
+      </button>
+
+      <!-- MAIN LOGO -->
+      <div class="">
+        <a href="{{ routes.root_url }}">
+          {% render 'icon-main-logo' %}
+        </a>
+      </div>
+
+      <!-- BURGER MENU BUTTON -->
+      <div class="md:hidden absolute right-0 top-2/4 -translate-y-2/4">
+        <button
+          class="bg-main"
+          x-on:click="mobileMenuOpen = true, document.body.classList.add(`overflow-hidden`)"
+          type="button">
+          {% render 'icon-burger-menu' %}
+        </button>
+      </div>
+
+      <!-- ACCOUNT LINK AND CART BUTTON -->
+      <div class="hidden md:flex justify-end gap-7 items-center">
+        {% if shop.customer_accounts_enabled %}
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="group flex gap-1 items-center">
+              {% render 'icon-user-account' %}
+              <span class="text-xs lg:text-sm font-poppins text-black duration-300 group-hover:text-gray-400">Account</span>
+            </a>
+          {% else %}
+            <a href="{{ routes.account_login_url }}" class="group flex gap-1 items-center">
+              {% render 'icon-user-account' %}
+              <span class="text-xs lg:text-sm font-poppins text-black duration-300 group-hover:text-gray-400">Log In</span>
+            </a>
+          {% endif %}
+        {% endif %}
+        <a href="{{ routes.cart_url }}" class="group flex gap-1 items-center">
+          {% render 'icon-shopping-bag' %}
+          <span class="text-xs lg:text-sm font-poppins text-black duration-300 group-hover:text-gray-400">Shopping</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div
+    x-show="searchBarOpen"
+    x-transition:enter="transition ease-out duration-1000"
+    x-transition:enter-start="-translate-y-full"
+    x-transition:enter-end="translate-y-0"
+    x-transition:leave="transition ease-out duration-1000"
+    x-transition:leave-start="translate-y-0"
+    x-transition:leave-end="-translate-y-full"
+    class="w-full z-10 absolute inset-x-auto top-0 container pr-6">
+    <div class="relative border-b-[1px] border-x-[1px] border-border bg-white py-4 px-3">
+      <div class="px-8 relative">
+        <button
+          x-on:click="searchBarOpen = false"
+          type="button"
+          class="absolute top-2/4 -translate-y-2/4 right-0">
+          {% render 'icon-close-button' %}
+        </button>
+        <div class="h-10 flex justify-center items-center">
+          <form
+            action="{{ routes.search_url }}"
+            method="get"
+            class="w-full h-full">
+            <div class="relative w-full h-full">
+              <input
+                type="text"
+                name="q"
+                class="w-full h-full border font-poppins font-sm md:font-lg border-border rounded-3xl px-4 focus:outline-none"
+                placeholder="Type here...">
+              <button type="submit" class="absolute top-2/4 -translate-y-2/4 right-4">
+                {% render 'icon-searchbar-inner' %}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN MENU NAVIGATION -->
+  <div class="hidden md:grid grid-cols-4 gap-2 text-center lg:flex justify-between items-center py-4">
+    {% for link in main_menu_linklist %}
+      <a href="{{ link.url }}" class="text-xs lg:text-sm font-poppins font-normal text-black duration-300 hover:text-gray-400">{{ link.title }}</a>
+    {% endfor %}
+  </div>
+
+  <!-- MOBILE MENU CONTAINER -->
+  <div x-show="mobileMenuOpen" class="absolute top-0 right-0 z-20 bg-black opacity-30 w-full h-screen"></div>
+  <div
+    x-show="mobileMenuOpen"
+    x-transition:enter="transition ease-out duration-1000"
+    x-transition:enter-start="translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition ease-out duration-1000"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="translate-x-full"
+    class="absolute top-0 right-0 z-30 md:hidden w-3/4 overflow-auto sm:w-1/2">
+    <div class="bg-white shadow-lg overflow-auto h-screen">
+      <div class="p-5">
+        <!-- MOBILE MENU TITLE AND CLOSE BUTTON -->
+        <div class="flex items-center justify-between pb-3 border-b-[1px] border-border">
+          <div class="">
+            <h1 class="text-lg text-black">{{ section.settings.mobile_menu_title }}</h1>
+          </div>
+          <div class="flex items-center">
+            <button
+              type="button"
+              class="bg-white"
+              x-on:click="mobileMenuOpen = false, document.body.classList.remove(`overflow-hidden`)">
+              {% render 'icon-close-button' %}
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE MENU NAVIGATION LINKS -->
+        <div class="py-7 border-b-[1px] border-border">
+          <nav class="grid gap-y-7">
+            <h2 class="font-bold font-poppins pb-3">Collections</h2>
+            {% for link in main_menu_linklist %}
+              <a href="{{ link.url }}" class="text-sm font-poppins font-normal text-black duration-300 hover:text-gray-400">{{ link.title }}</a>
+            {% endfor %}
+          </nav>
+        </div>
+
+        <!-- MOBILE MENU ACCOUNT LINKS -->
+        <div class="grid gap-y-7 py-7 items-center">
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <a href="{{ routes.account_url }}" class="group flex gap-1 items-center">
+                {% render 'icon-user-account' %}
+                <span class="text-xs lg:text-sm font-poppins text-black duration-300 group-hover:text-gray-400">Account</span>
+              </a>
+            {% else %}
+              <a href="{{ routes.account_login_url }}" class="group flex gap-1 items-center">
+                {% render 'icon-user-account' %}
+                <span class="text-xs lg:text-sm font-poppins text-black duration-300 group-hover:text-gray-400">Log In</span>
+              </a>
+            {% endif %}
+          {% endif %}
+          <a href="{{ routes.cart_url }}" class="group flex gap-1 items-center">
+            {% render 'icon-shopping-bag' %}
+            <span class="text-xs lg:text-sm font-poppins text-black duration-300 group-hover:text-gray-400">Shopping</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "default": "main-menu",
+        "label": "Heading Navigation Menu"
+      }, {
+        "type": "text",
+        "id": "mobile_menu_title",
+        "default": "Menu",
+        "label": "Mobile Menu Title"
+      }
+    ]
+  }
+{% endschema %}
