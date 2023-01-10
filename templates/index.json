@@ -1,21 +1,112 @@
 {
-    "name": "Homepage",
-    "sections": {
-        "shop-now-section": {
-            "type": "shop-now-section"
-        },
-        "collections-list": {
-            "type": "collections-list"
-        },
-        "new-product-collection": {
-            "type": "new-product-collection"
-        },
-        "zara-section": {
-            "type": "zara-section"
-        },
-        "collection-with-swiper": {
-            "type": "collection-with-swiper"
-        }
+  "sections": {
+    "shop-now-section": {
+      "type": "shop-now-section",
+      "settings": {
+        "shop-now-image": "shopify:\/\/shop_images\/shop-now-image.jpg",
+        "shop-now-heading": "Collections",
+        "shop-now-description": "You can explore and shop many differnt collection from various barands here."
+      }
     },
-    "order": ["shop-now-section","collections-list","new-product-collection","zara-section","collection-with-swiper"]
+    "collections-list": {
+      "type": "collections-list",
+      "settings": {
+        "collections_list_heading": "Explore new and popular styles",
+        "svg_collection_list": [
+          "furniture-design",
+          "golden-studio",
+          "graphic-studio-clothes",
+          "s-salva-art-director",
+          "travel-lookbook"
+        ],
+        "main_collections_list": [
+          "art-collectibles",
+          "clothing-shoes",
+          "craft-supplies-tools",
+          "toys-entertainment",
+          "wedding-party"
+        ]
+      }
+    },
+    "new-product-collection": {
+      "type": "new-product-collection",
+      "settings": {
+        "new-product-collection": "new-products"
+      }
+    },
+    "zara-section": {
+      "type": "zara-section",
+      "settings": {
+        "zara_collection_image": "shopify:\/\/shop_images\/zara-collection-image.jpg",
+        "zara_collection_picker": "zara-collection"
+      }
+    },
+    "collection-with-swiper": {
+      "type": "collection-with-swiper",
+      "settings": {
+        "collection-with-swiper": "best-sellers"
+      }
+    },
+    "9f62899e-b5a4-4728-a005-d38119938c51": {
+      "type": "contact-us",
+      "blocks": {
+        "cb9ec71e-e54a-4845-8a8d-2f05024c3c6e": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-1.jpg"
+          }
+        },
+        "2242118c-f122-405a-bbce-248ae5138581": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-2.jpg"
+          }
+        },
+        "97e2de8a-456c-4bb1-940d-b54bad9c4dcc": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-3.jpg"
+          }
+        },
+        "88246d82-8ee9-4a04-a7df-1f5eece613fe": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-4.jpg"
+          }
+        },
+        "9f7a326a-1a8a-49e6-8634-4b1df8b8e98a": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-5.jpg"
+          }
+        },
+        "43dc0de6-0e66-4e9a-a478-4216b02ef891": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "cb9ec71e-e54a-4845-8a8d-2f05024c3c6e",
+        "2242118c-f122-405a-bbce-248ae5138581",
+        "97e2de8a-456c-4bb1-940d-b54bad9c4dcc",
+        "88246d82-8ee9-4a04-a7df-1f5eece613fe",
+        "9f7a326a-1a8a-49e6-8634-4b1df8b8e98a",
+        "43dc0de6-0e66-4e9a-a478-4216b02ef891"
+      ],
+      "settings": {
+        "contact-title": "Follow products and discounts on Instagram",
+        "contact-subscribe-heading": "Or subscribe to the newsletter"
+      }
+    }
+  },
+  "order": [
+    "shop-now-section",
+    "collections-list",
+    "new-product-collection",
+    "zara-section",
+    "collection-with-swiper",
+    "9f62899e-b5a4-4728-a005-d38119938c51"
+  ]
 }

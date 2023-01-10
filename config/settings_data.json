@@ -1,6 +1,34 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu",
+          "mobile_menu_title": "Menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "store_address": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+          "footer-collections": [
+            "art-collectibles",
+            "best-sellers",
+            "clothing-shoes",
+            "craft-supplies-tools",
+            "furniture-design"
+          ],
+          "payment-image": "shopify:\/\/shop_images\/payment_sistems.png"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
   }
 }
