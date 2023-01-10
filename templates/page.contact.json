@@ -1,11 +1,66 @@
 {
-    "sections": {
-        "template": {
-            "type": "template-page"
-        },
-        "contact-us": {
-            "type": "contact-us"
-        }
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "settings": {
+      }
     },
-    "order": ["template", "contact-us"]
+    "contact-us": {
+      "type": "contact-us",
+      "blocks": {
+        "d2325606-0499-49bb-a409-ca3837833add": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-1.jpg"
+          }
+        },
+        "2b1d3ce4-0fa2-4578-adc8-6ed21c9a392e": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-2.jpg"
+          }
+        },
+        "7d316310-c729-4932-b442-2bc133d331ab": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-3.jpg"
+          }
+        },
+        "12966ac0-ddf3-4d47-b436-7359c5768841": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-4.jpg"
+          }
+        },
+        "71724fe1-df22-49ec-8a16-ba4585172b13": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-5.jpg"
+          }
+        },
+        "72ffd681-2a35-41a2-8b63-7b5f2df4dba5": {
+          "type": "instagram_links",
+          "settings": {
+            "instagram_link_image": "shopify:\/\/shop_images\/instagram-image-6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "d2325606-0499-49bb-a409-ca3837833add",
+        "2b1d3ce4-0fa2-4578-adc8-6ed21c9a392e",
+        "7d316310-c729-4932-b442-2bc133d331ab",
+        "12966ac0-ddf3-4d47-b436-7359c5768841",
+        "71724fe1-df22-49ec-8a16-ba4585172b13",
+        "72ffd681-2a35-41a2-8b63-7b5f2df4dba5"
+      ],
+      "settings": {
+        "contact-title": "Follow products and discounts on Instagram",
+        "contact-subscribe-heading": "Or subscribe to the newsletter"
+      }
+    }
+  },
+  "order": [
+    "template",
+    "contact-us"
+  ]
 }
